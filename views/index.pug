@@ -1,0 +1,217 @@
+doctype html
+html
+  head
+    title My First Pug | Woot
+    script(defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js" )
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+  body
+    Section
+      .column
+      .container
+      section.hero.is-primary.is-bold
+        .hero-body
+          .container
+            h1.title Timestamp Microservice
+            p.subtitle You 
+              strong GET 
+              |it, we {code} it!
+    
+    section
+      .column
+      .container
+        .tile.is-ancestor
+          .tile.is-vertical.is-8
+            
+            .tile.is-parent
+              article.tile.is-child.notification.is-danger
+                p.title How to use the service
+                p.subtitle it's simple really
+                p Time translations can be requested simply by placing a "/" 
+                  |after the url for the site and then typeing in whatever date and 
+                  |time text that you wish....then just hit enter.
+                p Try out a few different formats. Some suggested formats are included below.
+                p
+                  br
+                  |Try it out: (Copy the 
+                  b bold text 
+                  |below and paste it into the url bar) 
+                .box
+                  p 
+                    center https://phantom-silica.glitch.me
+                      b /Mon, 06 Mar 2017 21:22:23 +0000
+                .box
+                  p 
+                    center https://phantom-silica.glitch.me
+                      b /20130208T080910.123
+                p Feeling lazy? Click the button and I'll do it for you:
+                center
+                  form
+                    button.button.is-warning 
+                      a(href='/20130208T080910.123') boop!
+            
+            
+          .tile.is-parent.is-vertical
+            article.tile.is-child.notification.is-info
+              p.title Whats the time?
+              p.subtitle ....like now now?
+              .box
+                figure
+                  .clock.title(style="font-size: 3em;")
+                  .date.subtitle
+            article.tile.is-child
+              
+                
+      .column
+      section.hero.is-small.is-light.is-bold
+       .hero-body
+         .container
+           h1.title Valid Formats
+           h2.subtitle Use these for happiness
+      section
+        .column
+          article.notification.is-white
+            b ISO 8601 strings
+            .box.notification.is-light
+              table.table.is-fullwidth
+                thead
+                  tr
+                    th Format
+                    th Description
+                tbody
+                  tr
+                    td 
+                      b 2013-02-08  
+                    td # A calendar date part
+                  tr
+                    td
+                      b 2013-W06-5  
+                    td # A week date part
+                  tr
+                    td
+                      b 2013-039  
+                    td # An ordinal date part
+                  tr
+                    td
+                      b 20130208  
+                    td # Basic (short) full date
+                  tr
+                    td
+                      b 2013W065  
+                    td # Basic (short) week, weekday
+                  tr
+                    td
+                      b 2013W06  
+                    td # Basic (short) week only
+                  tr
+                    td
+                      b 2013050  
+                    td # Basic (short) ordinal date
+                  tr
+                    td
+                      b 2013-02-08T09  
+                    td # An hour time part separated by a T
+                  tr
+                    td
+                      b 2013-02-08 09  
+                    td # An hour time part separated by a space
+                  tr
+                    td
+                      b 2013-02-08 09:30  
+                    td # An hour and minute time part
+                  tr
+                    td
+                      b 2013-02-08 09:30:26  
+                    td # An hour, minute, and second time part
+                  tr
+                    td
+                      b 2013-02-08 09:30:26.123  
+                    td # An hour, minute, second, and millisecond time part
+                  tr
+                    td
+                      b 2013-02-08 24:00:00.000  
+                    td # hour 24, minute, second, millisecond equal 0 means next day at midnight
+
+                  tr
+                    td
+                      b 20130208T080910,123  
+                    td # Short date and time up to ms, separated by comma
+                  tr
+                    td
+                      b 20130208T080910.123  
+                    td # Short date and time up to ms
+                  tr
+                    td
+                      b 20130208T080910  
+                    td # Short date and time up to seconds
+                  tr
+                    td
+                      b 20130208T0809  
+                    td # Short date and time up to minutes
+                  tr
+                    td
+                      b 20130208T08  
+                    td # Short date and time, hours only
+      
+        .column
+          article.notification.is-white
+            b  The RFC 2822 date time format
+              .box.notification.is-light
+                table.table.is-fullwidth
+                  thead
+                    tr
+                      th Format
+                      th Description
+                  tbody
+                    tr
+                      td 
+                        b 6 Mar 17 21:22 UT
+                      td 
+                    tr
+                      td 
+                        b 6 Mar 17 21:22:23 UT
+                      td 
+                    tr
+                      td 
+                        b 6 Mar 2017 21:22:23 GMT
+                      td 
+                    tr
+                      td 
+                        b 06 Mar 2017 21:22:23 Z
+                      td 
+                    tr
+                      td 
+                        b Mon 06 Mar 2017 21:22:23 z
+
+                      td 
+                    tr
+                      td 
+                        b Mon, 06 Mar 2017 21:22:23 +0000
+                      td 
+                    
+  script.
+    function clock() {// We create a new Date object and assign it to a variable called "time".
+    var time = new Date(),
+
+        // Access the "getHours" method on the Date object with the dot accessor.
+        hours = time.getHours(),
+
+        // Access the "getMinutes" method with the dot accessor.
+        minutes = time.getMinutes(),
+
+
+        seconds = time.getSeconds();
+        
+        day = time.toDateString();
+
+    document.querySelectorAll('.clock')[0].innerHTML = harold(hours) + ":" + harold(minutes) + ":" + harold(seconds);
+    document.querySelectorAll('.date')[0].innerHTML = day;
+
+      function harold(standIn) {
+        if (standIn < 10) {
+          standIn = '0' + standIn
+        }
+        return standIn;
+      }
+    }
+    setInterval(clock, 1000);

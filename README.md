@@ -1,2 +1,1 @@
-# timestamp-microservice
-A micro service built for freecodecamp
+# Backend Challenges boilerplate - package.json
